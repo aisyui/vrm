@@ -1,0 +1,3 @@
+[submodule "dist/vrma"]
+	path = dist/vrma
+	url = git@git.syui.ai:ai/vrma

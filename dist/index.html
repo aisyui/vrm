@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ai</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta property="og:url" content="https://vrm.syui.ai">
+		<meta property="og:title" content="ai/vrm">
+		<meta property="og:description" content="ai[vrm] model viewer">
+		<meta property="og:image" content="/img/og.png">
+		<link rel="icon" href="/favicon.ico"/>
+		<link rel="stylesheet" href="/css/style.css"/>
+		<link rel="stylesheet" href="https://syui.ai/bower_components/icomoon/style.css" />
+		<link rel="stylesheet" href="https://syui.ai/bower_components/font-awesome/css/all.min.css" />
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<progress value="0" max="100" id="progressBar"></progress>
+		<div id="menu">
+			<span class="menu-top">
+				<button id='btn-ai'><a href="/"><span class="icon-ai"></span></a></button>
+			</span>
+			<span class="menu-left">
+				<button id='btn-moon'><span class="icon-moon"></span></button>
+				<button id='btn-jump'><i class="fa-solid fa-dove"></i></button>
+				<button id='btn-run'><i class="fa-solid fa-person-running"></i></button>
+			</span>
+			<span class="menu-right" id="nav-mobile">
+				<button id='btn-user'><i class="fa-solid fa-user"></i></button>
+				<button id='btn-grid'><i class="fa-solid fa-border-none"></i></button>
+				<button id='btn-sandar'><i class="fa-solid fa-location-dot"></i></button>
+				<button id='btn-tera'><i class="fa-solid fa-earth-americas"></i></button>
+			</span>
+			<span class="menu-nav">
+				<button id='nav'><i class="fa-solid fa-bars"></i></button>
+			</span>
+			<!--
+				<button id='btn-cloud'><i class="fa-solid fa-cloud"></i></button>
+				<button id='btn-sword'><i class="fa-solid fa-fan"></i></button>
+			-->
+		</div>
+		<div id="canvas"></div>
+		<footer>© syui</footer>
+	</body>
+</html>

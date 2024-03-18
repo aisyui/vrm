@@ -1,0 +1,41 @@
+name: github pages
+
+on:
+  push:
+    branches:
+    - main
+
+env:
+  GITEA_MAIL: ${{ secrets.GITEA_MAIL }}
+  GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 21
+        ref: main
+        submodules: true
+        fetch-depth: 0
+    - run: |
+           yarn install
+           rm -rf dist/vrma
+           git clone https://${GITEA_TOKEN}@git.syui.ai/ai/vrma dist/vrma
+           rm -rf dist/vrma/.git
+
+    - name: Build
+      env: 
+        TZ: "Asia/Tokyo"
+      run: |
+           yarn build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        user_name: 'ai[bot]'
+        user_email: '138105980+yui-syui-ai[bot]@users.noreply.github.com'
