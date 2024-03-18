@@ -1,6 +1,18 @@
+# vrm
+
+three-vrm + vrma
+
+## vrm & vrma
 
 ```sh
-$ npm i
-$ npm run dev
-$ npm run build
+$ git submodule update --init --recursive
 ```
+
+## build
+
+```sh
+$ yarn install
+$ yarn dev
+$ yarn build
+```
+
