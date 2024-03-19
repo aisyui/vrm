@@ -43,10 +43,7 @@ footer {
 }
 
 @media screen and (max-width:1000px) { 
-	div#canvas {
-		height: 1280px;
-	}
-	footer {
+		footer {
 		font-size: 30px;
 	}
 }
