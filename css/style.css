@@ -46,18 +46,7 @@ footer {
 	div#canvas {
 		height: 1280px;
 	}
-	div#menu {
-		align-content: center;
-		text-align: center;
-		padding: 50px;
-		font-size: 40px;
-		border-bottom:solid 1px #ccc;
-	}
-	button {
-		padding: 0 50px 0 50px;
-	}
-
 	footer {
-		font-size: 40px;
+		font-size: 30px;
 	}
 }
