@@ -28,6 +28,7 @@ button {
 
 a {
 	text-decoration: none;
+	color: #000;
 }
 
 a:hover{
@@ -42,8 +43,8 @@ footer {
 	text-align: center;
 }
 
-@media screen and (max-width:1000px) { 
-		footer {
+@media screen and (max-width:700px) { 
+	footer {
 		font-size: 30px;
 	}
 }
