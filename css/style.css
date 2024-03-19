@@ -4,33 +4,60 @@ div#canvas {
 }
 
 div#menu {
-    padding: 20px;
-				border-bottom:solid 1px #ccc;
+	padding: 20px;
+	border-bottom:solid 1px #ccc;
 }
 
 button {
-    border: none;
-    margin: 0;
-    padding: 0 20px 0 20px;
-    width: auto;
-    overflow: visible;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    line-height: normal;
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
-    appearance: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-    user-select: none;
+	border: none;
+	margin: 0;
+	padding: 0 20px 0 20px;
+	width: auto;
+	overflow: visible;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+	appearance: none;
+	-webkit-appearance: none;
+	cursor: pointer;
+	user-select: none;
 }
 
 a {
-text-decoration: none;
+	text-decoration: none;
 }
 
 a:hover{
 	/* color: #fff700; */
 	color: #847e00;
+}
+
+footer {
+	border-top:solid 1px #ccc;
+	padding: 20px 0 20px 0;
+	font-size:20px;
+	text-align: center;
+}
+
+@media screen and (max-width:1000px) { 
+	div#canvas {
+		height: 1280px;
+	}
+	div#menu {
+		align-content: center;
+		text-align: center;
+		padding: 50px;
+		font-size: 40px;
+		border-bottom:solid 1px #ccc;
+	}
+	button {
+		padding: 0 50px 0 50px;
+	}
+
+	footer {
+		font-size: 40px;
+	}
 }
