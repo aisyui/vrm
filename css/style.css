@@ -19,6 +19,24 @@ progress {
   background-color: #4682b4;
 }
 
+::-moz-progress-bar {
+	border-radius: 0px;
+	background-color: #e6e6fa;
+}
+
+::-moz-progress-value {
+  background-color: #4682b4;
+}
+
+::-ms-progress-bar {
+	border-radius: 0px;
+	background-color: #e6e6fa;
+}
+
+::-ms-progress-value {
+  background-color: #4682b4;
+}
+
 div#menu {
 	padding: 20px;
 	border-bottom:solid 1px #ccc;
@@ -60,7 +78,5 @@ footer {
 }
 
 @media screen and (max-width:1000px) { 
-	footer {
-		font-size: 30px;
-	}
+
 }
