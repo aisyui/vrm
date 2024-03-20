@@ -3,13 +3,20 @@ body {
 	overflow: hidden;
 }
 
-#progressBar {
-	width: 500px;
-	height: 24px;
+progress {
+	width: 100%;
+	height:8px;
 	position: absolute;
-	left: 50%;
-	top: 10px;
-	margin-left: -250px;
+	border-radius: 0px;
+}
+
+::-webkit-progress-bar {
+	border-radius: 0px;
+	background-color: #e6e6fa;
+}
+
+::-webkit-progress-value {
+  background-color: #4682b4;
 }
 
 div#menu {
