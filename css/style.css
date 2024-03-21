@@ -77,6 +77,18 @@ footer {
 	text-align: center;
 }
 
-@media screen and (max-width:1000px) { 
+span.menu-nav button#nav {
+	display: none;
+}
 
+@media screen and (max-width:1000px) { 
+	span#nav-mobile {
+		display: none;
+	}
+	span.menu-nav button#nav {
+		right:0;
+		display: block;
+		position: absolute;
+		top:20px;
+	}
 }
