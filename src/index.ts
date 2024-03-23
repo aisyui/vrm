@@ -6,10 +6,6 @@ import { createVRMAnimationClip, VRMAnimationLoaderPlugin } from "@pixiv/three-v
 import { GridHelper, Mesh, MeshLambertMaterial, BoxGeometry, Vector3, Vector2, Color, DirectionalLight, Fog, HemisphereLight, HalfFloatType } from 'three';
 import { VRMSpringBoneManager, VRMSpringBoneJoint, VRMSpringBoneJointHelper } from '@pixiv/three-vrm-springbone';
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-//import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-//import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
-//import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
-// https://github.com/pmndrs/postprocessing
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -104,7 +100,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	const loader = new GLTFLoader(manager);
-	
 	loader.register((parser) => {
 		return new VRMLoaderPlugin(parser);
 	});
@@ -114,6 +109,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	load("/vrma/model/ai.vrm");
 	load("/vrma/anime/fly_c.vrma");	
+
+	let item = null;
+	loader.load( '/vrma/item/tera.glb', function ( gltf ) {
+		item = gltf.scene;
+
+	}, undefined, function ( error ) {
+		console.error( error );
+	});
 
 	const clock = new THREE.Clock();
 	clock.start();
@@ -394,7 +397,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			currentVrm.update(delta);
 		}
 		requestAnimationFrame(animate);
-		scene.rotation.y += 0.005;
+		scene.rotation.y += 0.0005;
 		renderer.render(scene, camera);
 	}
 
@@ -430,6 +433,37 @@ window.addEventListener("DOMContentLoaded", () => {
 			} else {
 				nav_mobile.style.display = 'none'
 				nav_enable = true;
+			}
+		});
+	}
+
+	let grid_enable = true;
+	const el_grid = document.querySelector('#btn-grid') as HTMLInputElement | null;
+	if(el_grid != null) {
+		el_grid.addEventListener('click', function(){
+			if (grid_enable == true) {
+				scene.remove(grid);
+				grid_enable = false;
+			} else {
+				scene.add(grid);
+				grid_enable = true;
+			}
+		});
+	}
+
+	let tera_enable = true;
+	const el_tera = document.querySelector('#btn-tera') as HTMLInputElement | null;
+	if(el_tera != null) {
+		el_tera.addEventListener('click', function(){
+			if (tera_enable == true) {
+				item.rotation.set(0, 0, 5);
+				item.position.set(0, -15, 0);
+				item.scale.set(8, 8, 8);
+				scene.add(item);
+				tera_enable = false;
+			} else {
+				scene.remove(item);
+				tera_enable = true;
 			}
 		});
 	}
