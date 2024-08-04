@@ -1,6 +1,9 @@
 node_modules
-package-lock.json
+*package-lock.json
 example
-yarn.lock 
+*yarn.lock 
 **DS_Store
 dist/*.js
+*/node_modules
+*/public/models
+*/dist/models
