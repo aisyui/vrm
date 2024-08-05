@@ -10,6 +10,7 @@ import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocess
 
 window.addEventListener("DOMContentLoaded", () => {
 
+	let default_model = "/vrma/model/test.vrm"
 	// vrma
 	let motion_enable = false;
 	let head = null;
@@ -107,7 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		return new VRMAnimationLoaderPlugin(parser);
 	});
 
-	load("/vrma/model/ai.vrm");
+	load(default_model);
 	load("/vrma/anime/fly_c.vrma");	
 
 	let item = null;
