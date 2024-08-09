@@ -5,6 +5,7 @@ import { useFrame, Canvas } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { VRM, VRMUtils, VRMLoaderPlugin } from '@pixiv/three-vrm';
 import { VRMAnimationLoaderPlugin, VRMAnimation, createVRMAnimationClip } from "@pixiv/three-vrm-animation";
+import { VRMSpringBoneManager } from '@pixiv/three-vrm-springbone';
 import { EffectComposer, SelectiveBloom } from '@react-three/postprocessing'
 import { SphereGeometry } from 'three';
 import { GLTF } from 'three-stdlib'
@@ -21,6 +22,7 @@ const VRMModel: React.FC<ModelProps> = ({ url = "./models/ai.vrm", url_anim="./m
 
 	const [vrm, setVrm] = useState<VRM | null>(null);
 	const mixerRef = useRef<THREE.AnimationMixer | null>(null);
+	const springBoneManagerRef = useRef<VRMSpringBoneManager | null>(null);
 
 	useEffect(() => {
 		const loader = new GLTFLoader();
@@ -29,6 +31,8 @@ const VRMModel: React.FC<ModelProps> = ({ url = "./models/ai.vrm", url_anim="./m
 		loader.load(url, (gltf) => {
 			const vrmModel = gltf.userData.vrm as VRM;
 			VRMUtils.removeUnnecessaryJoints(vrmModel.scene);
+			springBoneManagerRef.current = vrmModel.springBoneManager as VRMSpringBoneManager;
+			springBoneManagerRef.current?.reset();
 			setVrm(vrmModel);
 			if (vrmModel) {
 				vrmModel.scene.rotation.set(...rotation);
@@ -49,6 +53,7 @@ const VRMModel: React.FC<ModelProps> = ({ url = "./models/ai.vrm", url_anim="./m
 
 	useFrame((state, delta) => {
 		if (mixerRef.current) mixerRef.current.update(delta);
+		if (springBoneManagerRef.current) springBoneManagerRef.current.update(delta);
 		if (vrm) vrm.update(delta);
 	});
 
