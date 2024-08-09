@@ -10,7 +10,7 @@ import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocess
 
 window.addEventListener("DOMContentLoaded", () => {
 
-	let default_model = "/vrma/model/test.vrm"
+	let default_model = "/vrma/model/ai.vrm"
 	// vrma
 	let motion_enable = false;
 	let head = null;
