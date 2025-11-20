@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+    environment: gh-pages
 
 env:
   GITEA_MAIL: ${{ secrets.GITEA_MAIL }}
@@ -16,26 +17,27 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: 21
-        ref: main
-        submodules: true
-        fetch-depth: 0
+        node-version: 25
+        cache: 'npm'
+        cache-dependency-path: atmosphere/package-lock.json
     - run: |
-           yarn install
+           npm ci
            rm -rf dist/vrma
-           git clone https://${GITEA_TOKEN}@git.syui.ai/ai/vrma dist/vrma
-           rm -rf dist/vrma/.git
+           git clone https://syu:${GITEA_TOKEN}@git.syui.ai/ai/vrma
+           cp -rf ./vrma/model/ai.vrm public/ 
+           cp -rf ./vrma/anime/idle.vrma public/ 
+      working-directory: min-react/
 
     - name: Build
       env: 
         TZ: "Asia/Tokyo"
-      run: |
-           yarn build
+      run: npm run build
+      working-directory: min-react/
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        publish_dir: ./min-react/dist
         user_name: 'ai[bot]'
         user_email: '138105980+yui-syui-ai[bot]@users.noreply.github.com'

@@ -88,6 +88,8 @@ export function Galaxy(props: JSX.IntrinsicElements['group']) {
 	const galaxyCenterLightRef = useRef<THREE.PointLight>(null!)
 	const searchParams = new URLSearchParams(window.location.search);
 	var g = searchParams.get('g') ?? 'galaxy';
+	const ms = searchParams.get('ms');
+	const vrm_scale = ms ? parseInt(ms, 10) : 1;
 	var model_galaxy = "./models/galaxy.glb"
 	var model_custom = "./models/ai.vrm"
 	var model_scale = 0.01;
@@ -158,7 +160,7 @@ export function Galaxy(props: JSX.IntrinsicElements['group']) {
 
 	return (
 		<group {...props} dispose={null} ref={ref}>
-		<VRMModel url={model_custom} url_anim={anim_custom} position={position_custom} scale={1} rotation={rotation_custom} />
+		<VRMModel url={model_custom} url_anim={anim_custom} position={position_custom} scale={vrm_scale} rotation={rotation_custom} />
 		{g === 'sun' && <GlbModel url="./models/solar-system.glb" scale={10} />}
 		{g === 'galaxy' && <GlbModel url="./models/solar-system.glb" scale={0.5} position={[0,0.5,2]}/>}
 
